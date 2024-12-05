@@ -9,8 +9,12 @@ public class PlayerController : MonoBehaviour
     public float xRange = 90;
     public float YRange = 10;
     public float bottomrange = 1;
-    public GameObject projectilePrefab;
     Rigidbody2D rb;
+
+    [Header("Laaseri")]
+    public Transform LaaseriSpawnTransform;
+    public GameObject projectilePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,9 +43,13 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, YRange, transform.position.z);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+            Shoot();
         }
+    }
+    void Shoot()
+    {
+        Instantiate(projectilePrefab, LaaseriSpawnTransform.position, projectilePrefab.transform.rotation);
     }
 }
