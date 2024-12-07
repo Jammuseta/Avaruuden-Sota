@@ -5,16 +5,25 @@ using UnityEngine;
 public class Laaseri : MonoBehaviour
 {
     public float speed = 40.0f;
-    
+    private GameObject vihu1;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.right * Time.deltaTime * speed);
+    }
+    void OnTriggerEnter(Collider other)
+    {   // Tuhoaa vihollisen ja Tuhoaa pelaajan
+        if (other.CompareTag("vihu"))
+        {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
     }
 }
