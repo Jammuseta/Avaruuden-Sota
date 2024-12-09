@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    public static bool GameIsOver = false;
     public GameObject pauseMenuUI;
 
     void Start()
@@ -16,15 +17,18 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!GameIsOver)  // Jos peli ei ole p‰‰ttynyt, voidaan k‰sitell‰ pause-Canvasta
         {
-            if (GameIsPaused)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Resume();
-            }
-            else
-            {
-                Pause();
+                if (GameIsPaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
             }
         }
     }

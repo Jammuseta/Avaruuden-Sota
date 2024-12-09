@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Enemy : MonoBehaviour
     private GameObject pelaaja;
     public AudioClip DeathSound;
     private AudioSource audioSource;
+    public  GameObject gameOverUI;
 
     // Start is called before the first frame update
     void Start()
@@ -31,13 +33,25 @@ public class Enemy : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other)
+
     {   // Tuhoaa vihollisen ja Tuhoaa pelaajan
+
         if (other.CompareTag("pelaaja")) {
 
-
-            audioSource.PlayOneShot(DeathSound);  // Soitetaan kuoleman ‰‰ni
+            // Soitetaan kuoleman ‰‰ni kun vihollinen osuu pelaajaan ja tuhotaan molemmat objektit
+            audioSource.PlayOneShot(DeathSound);  
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+            GameOver();
 
         }
-        //Time.timeScale = 0f;
+
+    }
+    void GameOver()
+    {
+         // N‰ytet‰‰n Game Over canvas
+        gameOverUI.SetActive(true); 
+        Time.timeScale = 0f;
+        MainMenu.GameIsOver = true;
     }
 }
