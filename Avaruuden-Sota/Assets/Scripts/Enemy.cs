@@ -38,10 +38,8 @@ public class Enemy : MonoBehaviour
 
         if (other.CompareTag("pelaaja")) {
 
-            // Soitetaan kuoleman ‰‰ni kun vihollinen osuu pelaajaan ja tuhotaan molemmat objektit
+            // Soitetaan kuoleman ‰‰ni kun vihollinen osuu pelaajaan
             audioSource.PlayOneShot(DeathSound);  
-            Destroy(gameObject);
-            Destroy(other.gameObject);
             GameOver();
 
         }

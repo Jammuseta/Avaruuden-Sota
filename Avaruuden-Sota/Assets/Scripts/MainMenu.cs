@@ -56,6 +56,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayAgain()
     {
+        GameIsOver = false;
         SceneManager.LoadScene("SampleScene");
         Time.timeScale = 1.0f;          
     }
