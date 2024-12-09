@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float xRange = 90;
     public float YRange = 10;
     public float bottomrange = 1;
-    Rigidbody2D rb;
+    Rigidbody rb;
 
     [Header("Laaseri")]
     public Transform LaaseriSpawnTransform;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
