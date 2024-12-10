@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private GameObject pelaaja;
     public AudioClip DeathSound;
     private AudioSource audioSource;
-    public  GameObject gameOverUI;
+    public GameObject gameOverUI;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
         vihu1 = GetComponent<Rigidbody>();  
         pelaaja = GameObject.Find("pelaaja");
         audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
         if (pelaaja != null && vihu1 != null)
         {
             // Laske suunta pelaajaa kohti ja Asetetaan vihollisen nopeus suoraan pelaajaa kohti
+
             Vector3 lookDirection = (pelaaja.transform.position - transform.position).normalized;
             vihu1.velocity = lookDirection * speed;
         }
@@ -47,7 +49,7 @@ public class Enemy : MonoBehaviour
     }
     void GameOver()
     {
-         // N‰ytet‰‰n Game Over canvas
+        // N‰ytet‰‰n Game Over canvas ja pys‰ytet‰‰n peli
         gameOverUI.SetActive(true); 
         Time.timeScale = 0f;
         MainMenu.GameIsOver = true;
