@@ -359,6 +359,7 @@
 "Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/OutOfBounds.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/SoundManager.cs"
 "Assets/Scripts/SpawnManager.cs"
 -langversion:9.0
 
