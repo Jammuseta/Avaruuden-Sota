@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float YRange = 10;
     public float bottomrange = 1;
     Rigidbody rb;
+    public float currentSpeed;
 
     [Header("Laaseri")]
     public Transform LaaseriSpawnTransform;
@@ -19,11 +20,22 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        currentSpeed = movSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            currentSpeed = movSpeed * 2f;  // Tuplataan nopeus
+        }
+        else
+        {
+            currentSpeed = movSpeed;  // Palautetaan normaali nopeus
+        }
+
+
         speedX = Input.GetAxisRaw("Horizontal") * movSpeed;
         speedY = Input.GetAxisRaw("Vertical") * movSpeed;
         rb.velocity = new Vector2(speedX, speedY);
