@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Laaseri : MonoBehaviour
 {
-    public float speed = 40.0f;
+    public float speed = 60f;
     private GameObject vihu1;
     private bool hasHit = false;
 

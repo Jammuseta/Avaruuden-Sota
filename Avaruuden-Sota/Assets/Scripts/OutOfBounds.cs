@@ -7,9 +7,10 @@ public class OutOfBounds : MonoBehaviour
     // Start is called before the first frame update
     public float topBound;
     public float bottomBound;
+    private Camera mainCamera;
     void Start()
     {
-        
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
