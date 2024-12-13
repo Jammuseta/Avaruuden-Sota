@@ -6,6 +6,7 @@ TagManager:
   tags:
   - vihu
   - pelaaja
+  - GameOverCanvas
   layers:
   - Default
   - TransparentFX

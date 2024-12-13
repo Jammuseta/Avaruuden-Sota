@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class PlayerController : MonoBehaviour
     public float bottomrange = 1;
     Rigidbody rb;
     public float currentSpeed;
+    public GameObject gameOverUI;
+    public AudioClip DeathSound;
+    private AudioSource audioSource;
+    public TextMeshProUGUI finalScoreText; // Reference to the Final Score text
 
     [Header("Laaseri")]
     public Transform LaaseriSpawnTransform;
@@ -21,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currentSpeed = movSpeed;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -63,5 +70,28 @@ public class PlayerController : MonoBehaviour
     void Shoot()
     {
         Instantiate(projectilePrefab, LaaseriSpawnTransform.position, projectilePrefab.transform.rotation);
+    }
+    void OnTriggerEnter(Collider other)
+
+    {
+
+        if (other.CompareTag("vihu"))
+        {
+
+            // Soitetaan kuoleman ‰‰ni kun vihollinen osuu pelaajaan
+            audioSource.PlayOneShot(DeathSound);
+            GameOver();
+
+        }
+
+    }
+    void GameOver()
+    {
+        // N‰ytet‰‰n Game Over canvas ja pys‰ytet‰‰n peli
+        int finalScore = ScoreManager.Instance.GetFinalScore();
+        finalScoreText.text = "Final Score: " + finalScore;
+        gameOverUI.SetActive(true);
+        Time.timeScale = 0f;
+        MainMenu.GameIsOver = true;
     }
 }

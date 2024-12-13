@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Laaseri : MonoBehaviour
@@ -7,6 +8,7 @@ public class Laaseri : MonoBehaviour
     public float speed = 60f;
     private GameObject vihu1;
     private bool hasHit = false;
+    public int scoreValue = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -38,9 +40,11 @@ public class Laaseri : MonoBehaviour
 
         if (other.CompareTag("vihu"))
         {
+            ScoreManager.Instance.AddScore(scoreValue);
             hasHit = true;
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
     }
+
 }

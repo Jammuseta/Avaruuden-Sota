@@ -8,7 +8,8 @@ public class MainMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public static bool GameIsOver = false;
     public GameObject pauseMenuUI;
-
+    public addscores targetScript;
+    public database display;
     void Start()
     {
         // Piilotetaan pause-valikko heti pelin alussa
@@ -56,9 +57,13 @@ public class MainMenu : MonoBehaviour
 
     public void PlayAgain()
     {
+        int finalScore = ScoreManager.Instance.GetFinalScore();
+        string playerName = PlayerNameManager.Instance.GetPlayerName();
         GameIsOver = false;
         SceneManager.LoadScene("SampleScene");
-        Time.timeScale = 1.0f;          
+        targetScript.AddScore(finalScore, playerName);
+        Time.timeScale = 1.0f;
+        finalScore = 0;
     }
 
     // Sammuttaa ohjelman, kun painetaan Quit-n‰pp‰int‰
@@ -71,7 +76,10 @@ public class MainMenu : MonoBehaviour
     // Palaa takaisin p‰‰valikkoon
     public void Main()
     {
+        int finalScore = ScoreManager.Instance.GetFinalScore();
+        string playerName = PlayerNameManager.Instance.GetPlayerName();
         SceneManager.LoadScene("Main Menu");
-        Time.timeScale = 1.0f;         
+        Time.timeScale = 1.0f;
+        targetScript.AddScore(finalScore, playerName);     
     }
 }
