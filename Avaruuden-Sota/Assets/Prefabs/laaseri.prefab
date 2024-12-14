@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
+  scoreValue: 15
 --- !u!114 &2504453819176120141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,5 +162,5 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.8755406, y: 0.5482272, z: 0.2}
-  m_Center: {x: -0.10227305, y: -0.017693222, z: 0}
+  m_Size: {x: 2.1874015, y: 0.9750593, z: 0.2}
+  m_Center: {x: -0.06880224, y: -0.009615123, z: 0}
