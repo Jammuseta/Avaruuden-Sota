@@ -7,6 +7,10 @@ public class PlayerNameManager : MonoBehaviour
     public string playerName = ""; // Store the player's name
     public TMP_InputField nameInputField; // Reference to the Input Field for the player name
 
+    private void Start()
+    {
+        nameInputField.text = "Player";
+    }
     private void Awake()
     {
         // Singleton pattern
@@ -32,6 +36,9 @@ public class PlayerNameManager : MonoBehaviour
     // Method to retrieve the player name
     public string GetPlayerName()
     {
+        if (playerName == "") {
+            playerName = "Player";
+        }
         return playerName;
     }
 }

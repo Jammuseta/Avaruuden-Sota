@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            currentSpeed = movSpeed * 2f;  // Tuplataan nopeus
+            currentSpeed = movSpeed * 1.5f;  // 1.5x nopeus
         }
         else
         {
@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        speedX = Input.GetAxisRaw("Horizontal") * movSpeed;
-        speedY = Input.GetAxisRaw("Vertical") * movSpeed;
+        speedX = Input.GetAxisRaw("Horizontal") * currentSpeed;
+        speedY = Input.GetAxisRaw("Vertical") * currentSpeed;
         rb.velocity = new Vector2(speedX, speedY);
         if (transform.position.x < -xRange)
         {
